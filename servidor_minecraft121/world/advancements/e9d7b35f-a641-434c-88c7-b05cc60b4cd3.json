@@ -1,0 +1,129 @@
+{
+  "jodek:crafting": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "zensiert:zensiert/root": {
+    "criteria": {
+      "a": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "craemon:main": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "jodek:mobs": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "jodek:shulker_two_shells": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "jodek:craft_spawn_eggs": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "global:root": {
+    "criteria": {
+      "requirement": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "craemon:craftable_nametag": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "craemon:crafting": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "notblue:about_vegan_mob_drops": {
+    "criteria": {
+      "requirement": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "jodek:no_creeper_grief": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "zensiert:zensiert/agricultural_automation": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "jodek:root": {
+    "criteria": {
+      "tick": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "jodek:get_recipes": {
+    "criteria": {
+      "Always": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "global:not_blue": {
+    "criteria": {
+      "requirement": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "notblue:about_fortunate_ancient_debris": {
+    "criteria": {
+      "requirement": "2024-06-27 03:18:26 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:plains": "2024-06-27 03:18:27 +0000"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/iron_nugget_from_smelting": {
+    "criteria": {
+      "has_iron_pickaxe": "2024-06-27 03:18:33 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/iron_tools": {
+    "criteria": {
+      "iron_pickaxe": "2024-06-27 03:18:33 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget_from_blasting": {
+    "criteria": {
+      "has_iron_pickaxe": "2024-06-27 03:18:33 +0000"
+    },
+    "done": true
+  },
+  "DataVersion": 3953
+}

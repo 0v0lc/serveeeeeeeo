@@ -19,7 +19,7 @@ def gradient_text(text, colors):
         color2 = colors[color_index + 1] if color_index + 1 < num_colors else colors[color_index]
         r = int(color1[0] + (color2[0] - color1[0]) * t)
         g = int(color1[1] + (color2[1] - color1[1]) * t)
-        b = int(color1[2] + (color2[2] - color1[2]) * t)
+        b = int(color2[2] + (color2[2] - color2[2]) * t)
         result += f'\033[38;2;{r};{g};{b}m{char}'
     return result + '\033[0m'
 
@@ -48,15 +48,15 @@ def mostrar_progreso():
 
 def instalar_chafa():
     ocultar_cursor()
-    print(gradient_text("〚☰ 〛 Verificando instalación de chafa...", RGB))
+    print(gradient_text("〚☰ 〛Verificando instalación de Chafa...", RGB))
     chafa_instalado = subprocess.call(['which', 'chafa'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0
     if not chafa_instalado:
         ocultar_cursor()
-        print(gradient_text("〚☰ 〛 Chafa no está instalado. Instalando...", RGB))
+        print(gradient_text("〚☰ 〛Chafa no está instalado. Instalando...", RGB))
         subprocess.run(['sudo', 'apt-get', 'update'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run(['sudo', 'apt-get', 'install', '-y', 'chafa'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     else:
-        print(gradient_text("〚✔ 〛 Chafa ya está instalado.", RGB))
+        print(gradient_text("〚✔ 〛Chafa ya está instalado.", RGB))
 
 def instalar_zerotier():
     progreso_thread = threading.Thread(target=mostrar_progreso)
@@ -70,11 +70,11 @@ def instalar_zerotier():
     progreso_thread.join()
     sys.stdout.write("\033[2;0H" + " " * 80 + "\r") 
     sys.stdout.flush()
-    print(gradient_text("〚✔ 〛 ZeroTier instalado y configurado.", RGB))
+    print(gradient_text("〚✔ 〛ZeroTier instalado y configurado.", RGB))
 
 def obtener_ip_zerotier():
-    print(gradient_text("〚☰〛 Obteniendo IP de ZeroTier...", RGB))
-    intentos = 5
+    print(gradient_text("〚☰ 〛Obteniendo IP de ZeroTier...", RGB))
+    intentos = 10
     ip = None
     
     for _ in range(intentos):
@@ -88,9 +88,9 @@ def obtener_ip_zerotier():
     
     if ip:
         os.system('clear')
-        print(gradient_text(f"〚✔ 〛 IP de ZeroTier obtenida ", RGB))
+        print(gradient_text(f"〚✔ 〛IP de ZeroTier obtenida ", RGB))
     else:
-        print(gradient_text("〚✖ 〛 No se pudo obtener la IP de ZeroTier.", RGB))
+        print(gradient_text("〚✖ 〛No se pudo obtener la IP de ZeroTier. Por favor, intentálo de nuevo.", RGB))
     
     return ip
 
@@ -98,34 +98,36 @@ def Menu():
     while True:
         os.system('clear')
         menu = [
-            gradient_text("〚１〛𝟭 Instalar ZeroTier", RGB),
-            gradient_text("〚２〛𝟮 Desactivar ZeroTier", RGB),
-            gradient_text("〚３〛𝟯 Salir", RGB),
+            gradient_text("〚1〛Instalar ZeroTier", RGB),
+            gradient_text("〚2〛Desactivar ZeroTier", RGB),
+            gradient_text("〚3〛Salir", RGB),
         ]
         for line in menu:
             ocultar_cursor()
             print(line)
             mostrar_cursor()
         
-        print(gradient_text("〚➥ 〛Seleccioná una opción ❱  ", RGB), end='')
+        print(gradient_text("   \n〚➥ 〛Seleccioná una opción ❱ ", RGB), end='')
         opcion = input()
 
         if opcion == "1":
             os.system('clear')
             ocultar_cursor()
-            print(gradient_text("〚☰ 〛 Iniciando instalación de ZeroTier...", RGB))
+            print(gradient_text("〚☰ 〛Iniciando instalación de ZeroTier...", RGB))
 
             instalar_chafa()
 
             os.system('clear')
-            print(gradient_text("〚☰ 〛 Si no sabes utilizar este servicio lee:", RGB))
+            print(gradient_text("〚☰ 〛Si no sabés utilizar este servicio leé:", RGB))
+            print(gradient_text("〚⠸ 〛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", RGB))
             print(gradient_text("〚⏎ 〛Si ya lo leíste apretá Enter para continuar...", RGB))
+            print(gradient_text("    ", RGB))
 
             chafa_command = "chafa --size=20x10 --dither=diffusion --colors=truecolor sapo.jpg"
             ascii_image = os.popen(chafa_command).read()
             input(ascii_image)
             os.system('clear')
-            print(gradient_text('〚🡻 〛 Descargando e instalando ZeroTier...', RGB))
+            print(gradient_text('〚🡻 〛Descargando e instalando ZeroTier...', RGB))
 
             sys.stdout.write("\033[2;0H")
             sys.stdout.flush()
@@ -136,11 +138,11 @@ def Menu():
             progreso_thread.join()
             sys.stdout.write("\033[2;0H" + " " * 80 + "\r") 
             sys.stdout.flush()
-            print(gradient_text("〚✔ 〛 ZeroTier instalado!", RGB))
+            print(gradient_text("〚✔ 〛ZeroTier instalado!", RGB))
             time.sleep(2)
             os.system('clear')
 
-            print(gradient_text("〚︙〛=========================\n〚☰ 〛Network ID\n〚↪︎〛Colocá la ID de tu Network ❱ ", RGB))
+            print(gradient_text("〚✔ 〛ZeroTier instalado!\n〚⠸ 〛━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n〚☰ 〛Network ID\n  \n〚➥ 〛Colocá la ID de tu Network ❱ ", RGB), end='')
             mostrar_cursor()
             network_id = input()
             ocultar_cursor()
@@ -149,7 +151,7 @@ def Menu():
             os.system('clear')
 
             ocultar_cursor()
-            print(gradient_text("〚☰ 〛 Configurando tu ID...", RGB))
+            print(gradient_text("〚☰ 〛Configurando tu ID...", RGB))
             time.sleep(2)
             os.system('clear')
             ip = obtener_ip_zerotier()
@@ -168,51 +170,37 @@ def Menu():
                     with open(os.path.join(addons_dir, 'Ip-de-servidor.json'), 'w') as file:
                         json.dump({"ip": ip}, file)
                     with open(os.path.join(addons_dir, 'ZeroTier.json'), 'w') as file:
-                        json.dump({"Activo": True}, file)
-                    with open(config_path, 'w') as file:
-                        json.dump(config, file)
-                    
-                    print(gradient_text(f"〚✔ 〛 Servidor configurado en: ZeroTier", RGB))
-                    print(gradient_text(f"〚︙〛=========================\n〚☰ 〛 La IP de tu servidor es: {ip}", RGB))
-                    input(gradient_text("〚⏎ 〛Apretá enter boludito si querés que se te prenda el server sapo de mierda...", RGB))
-                    mostrar_cursor()
-                except (IOError, json.JSONDecodeError) as e:
-                    print(gradient_text(f"〚✖ 〛 Error al procesar el archivo de configuración: {e}", RGB))
-            else:
-                print(gradient_text("〚✖ 〛 No se pudo obtener la IP de ZeroTier. Por favor, inténtalo nuevamente.", RGB))
-            break
+                        json.dump({"ZeroTier": "Activo"}, file)
+                except Exception as e:
+                    print(f"〚✖ 〛Error al actualizar el archivo JSON: {e}")
+            input(gradient_text('〚⏎ 〛Presioná Enter para continuar...', RGB))
 
         elif opcion == "2":
             os.system('clear')
             ocultar_cursor()
-            print('〚⛒ 〛Desactivando ZeroTier...', RGB)
-            sys.stdout.write("\033[2;0H")
-            sys.stdout.flush()
-
-            for i in range(1, 11):    
-                sys.stdout.write(f"\033[2;0H{gradient_text('〘' + '◼ ' * i + '〙', RGB)}")
-                sys.stdout.flush()
-                time.sleep(1)
-            sys.stdout.write("\033[2;0H" + " " * 80 + "\r") 
-            print(gradient_text("〚✔ 〛ZeroTier desactivado!", RGB))
-            sys.stdout.write("\033[?25h")
-
-            archivo_zero_tier = 'addons/ZeroTier.json'
-            if os.path.exists(archivo_zero_tier):
-                os.remove(archivo_zero_tier)
-            break
+            print(gradient_text("〚☰ 〛Desactivando ZeroTier...", RGB))
+            subprocess.run('sudo service zerotier-one stop', shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            try:
+                config_path = "addons/ZeroTier.json"
+                if os.path.exists(config_path):
+                    with open(config_path, 'r') as file:
+                        data = json.load(file)
+                    if "ZeroTier" in data and data["ZeroTier"] == "Activo":
+                        data["ZeroTier"] = "Inactivo"
+                        with open(config_path, 'w') as file:
+                            json.dump(data, file)
+            except Exception as e:
+                print(f"〚✖ 〛Error al actualizar el archivo JSON: {e}")
+            print(gradient_text("〚✔ 〛ZeroTier desactivado.", RGB))
+            mostrar_cursor()
+            input(gradient_text('〚⏎ 〛Presioná Enter para continuar...', RGB))
 
         elif opcion == "3":
-            ocultar_cursor()
-            sys.stdout.write("\r" + " " * 80 + "\r")
-            sys.stdout.flush()
-            print(gradient_text("〚❮❰ 〛Saliendo al menu...", RGB))
-            time.sleep(2)
-            break
-
+            mostrar_cursor()
+            sys.exit()
         else:
-            ocultar_cursor()
-            print(gradient_text("〚✖ 〛Opción inválida. Por favor, seleccioná una opción válida.. ", RGB))
+            print(gradient_text('〚✖ 〛Opción no válida. Por favor, elegí una opción del 1 al 3.', RGB))
+            time.sleep(1)
 
 def verificar_activo():
     archivo_zero_tier = 'addons/ZeroTier.json'
@@ -232,4 +220,3 @@ def verificar_activo():
             silencioso(comando)
 
 verificar_activo()
-Menu()
